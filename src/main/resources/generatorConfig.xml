@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+
+    <context id="Mysql" targetRuntime="MyBatis3">
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver"
+                        connectionURL="jdbc:mysql://localhost:3306/my_site_db"
+                        userId="root"
+                        password="root">
+        </jdbcConnection>
+
+        <javaTypeResolver >
+            <property name="forceBigDecimals" value="false" />
+        </javaTypeResolver>
+
+        <javaModelGenerator targetPackage="com.lovevol.mysite.model" targetProject="src/main/java">
+            <property name="enableSubPackages" value="true" />
+            <property name="trimStrings" value="true" />
+        </javaModelGenerator>
+
+        <sqlMapGenerator targetPackage="mapper"  targetProject="src/main/resources">
+            <property name="enableSubPackages" value="true" />
+        </sqlMapGenerator>
+
+        <javaClientGenerator type="XMLMAPPER" targetPackage="com.lovevol.mysite.dao"  targetProject="src/main/java">
+            <property name="enableSubPackages" value="true" />
+        </javaClientGenerator>
+        <table schema="my_site_db" tableName="user" domainObjectName="User" >
+            <generatedKey column="id" sqlStatement="Mysql" identity="true" />
+        </table>
+        <table schema="my_site_db" tableName="article" domainObjectName="Article" >
+            <generatedKey column="id" sqlStatement="Mysql" identity="true" />
+        </table>
+        <table schema="my_site_db" tableName="category" domainObjectName="Category" >
+            <generatedKey column="id" sqlStatement="Mysql" identity="true" />
+        </table>
+        <table schema="my_site_db" tableName="content" domainObjectName="Content" >
+            <generatedKey column="id" sqlStatement="Mysql" identity="true" />
+        </table>
+        <table schema="my_site_db" tableName="ebook" domainObjectName="EBook" >
+            <generatedKey column="id" sqlStatement="Mysql" identity="true" />
+        </table>
+        <table schema="my_site_db" tableName="label" domainObjectName="Label" >
+            <generatedKey column="id" sqlStatement="Mysql" identity="true" />
+        </table>
+        <table schema="my_site_db" tableName="web" domainObjectName="Web" >
+            <generatedKey column="id" sqlStatement="Mysql" identity="true" />
+        </table>
+
+    </context>
+</generatorConfiguration>

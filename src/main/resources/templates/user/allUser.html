@@ -1,0 +1,28 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head> 
+    <title>User</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link th:href="@{/static/layui/css/layui.css}" rel="stylesheet" type="text/css">
+</head>
+<script th:src="@{/static/layui/layui.all.js}"></script>
+<script th:src="@{/static/js/jquery-3.3.1.min.js}"></script>
+<script>
+    function test(){
+        var layer = layui.layer
+            ,form = layui.form;
+
+        layer.alert('Hello World');
+    }()
+</script>
+<body>
+    <div class="layui-form">
+        <table class="layui-table">
+            <tr th:each="user: ${users}">
+                <td th:text="${user.userName}"></td>
+            </tr>
+        </table>
+    </div>
+    <p th:text="${num}"></p>
+</body>
+</html>

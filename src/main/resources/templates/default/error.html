@@ -1,0 +1,19 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head> 
+    <title>User</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link th:href="@{~/layui/css/layui.css}" rel="stylesheet" type="text/css">
+</head>
+<script th:src="@{~/layui/layui.all.js}"></script>
+<script th:src="@{~/js/jquery-3.3.1.min.js}"></script>
+
+<body>
+    <div class="layui-form">
+        <p>ERROR</p>
+        <p th:text="${exception}"></p>
+        <p th:text="${path}"></p>
+    </div>
+
+</body>
+</html>
