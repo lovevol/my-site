@@ -29,7 +29,7 @@ public class WebAppConfig extends WebMvcConfigurationSupport{
 
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
-        registry.addResourceHandler("/**")
+        registry.addResourceHandler("/static/**")
                 .addResourceLocations(CLASSPATH_RESOURCE_LOCATIONS);
     }
 }
