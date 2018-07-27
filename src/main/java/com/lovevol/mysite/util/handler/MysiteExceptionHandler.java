@@ -1,4 +1,4 @@
-package com.lovevol.mysite.util;
+package com.lovevol.mysite.util.handler;
 
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 @ControllerAdvice
-public class MysiteExcetiomHandler {
+public class MysiteExceptionHandler {
     public static final String ERROR_PAGE = "/default/error";
 
     @ExceptionHandler(value = Exception.class)
