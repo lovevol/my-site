@@ -1,24 +1,22 @@
 package com.lovevol.mysite.controller.user;
 
 import com.lovevol.mysite.config.Resource;
+import com.lovevol.mysite.controller.BaseController;
 import com.lovevol.mysite.model.User;
 import com.lovevol.mysite.redis.StringRedisService;
 import com.lovevol.mysite.service.UserService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.cache.annotation.CachePut;
-import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
 @Controller
 @RequestMapping("/user")
-public class UserController {
+public class UserController extends BaseController {
 
     @Autowired
     UserService userService;
@@ -45,7 +43,9 @@ public class UserController {
 
     @GetMapping("/all")
     public String allUser(Model model){
+        this.setPageParam(0,1);
         model.addAttribute("num", stringRedisService.getString("userCount"));
+        List<User> users = userService.getAllUser();
         model.addAttribute("users", userService.getAllUser());
         return "/user/allUser";
     }
