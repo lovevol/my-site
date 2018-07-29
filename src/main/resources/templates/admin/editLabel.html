@@ -23,7 +23,7 @@
                     <div class="layui-form-item">
                         <label class="layui-form-label">名称</label>
                         <div class="layui-input-block">
-                            <input type="text" th:name="name" th:id="name"  autocomplete="off" placeholder="请输入标题"
+                            <input type="text" th:name="name" th:id="name" autocomplete="off" placeholder="请输入标题"
                                    class="layui-input">
                         </div>
                     </div>
@@ -39,29 +39,30 @@
                                 </div>
                             </select>
                             <div class="layui-unselect layui-form-select">
-                                <div class="layui-select-title"><input type="text" placeholder="请选择" value="阅读"
-                                                                       readonly="" class="layui-input layui-unselect"><i
-                                        class="layui-edge"></i></div>
-                                <dl class="layui-anim layui-anim-upbit">
-                                    <dd lay-value="" class="layui-select-tips">请选择</dd>
-                                    <div th:each="category:${categorys}">
-                                        <dd th:lay-value="${category.id}" th:value="${category.id}" th:text="${category.name}"></dd>
+                                <div class="layui-select-title">
+                                    <dl class="layui-anim layui-anim-upbit">
+                                        <dd lay-value="" class="layui-select-tips">请选择</dd>
+                                        <div th:each="category:${categorys}">
+                                            <dd th:lay-value="${category.id}" th:value="${category.id}"
+                                                th:text="${category.name}"></dd>
 
-                                    </div>
-                                </dl>
+                                        </div>
+                                    </dl>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="layui-form-item layui-form-text">
-                        <label class="layui-form-label">描述</label>
-                        <div class="layui-input-block">
-                            <textarea placeholder="请输入内容" class="layui-textarea" name="description" id="description"></textarea>
+                        <div class="layui-form-item layui-form-text">
+                            <label class="layui-form-label">描述</label>
+                            <div class="layui-input-block">
+                                <textarea placeholder="请输入内容" class="layui-textarea" name="description"
+                                          id="description"></textarea>
+                            </div>
                         </div>
-                    </div>
-                    <div class="layui-form-item">
-                        <div class="layui-input-block">
-                            <button class="layui-btn" lay-submit="" lay-filter="demo1">提交</button>
-                            <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                        <div class="layui-form-item">
+                            <div class="layui-input-block">
+                                <button class="layui-btn" lay-submit="" lay-filter="demo1">提交</button>
+                                <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                            </div>
                         </div>
                     </div>
                 </form>
@@ -97,8 +98,10 @@
 
                             <td th:text="${label.description}"></td>
                             <td>
-                                <button class="layui-btn layui-btn-sm layui-btn-danger"><i class="layui-icon layui-icon-delete"></i></button>
-                                <button class="layui-btn layui-btn-sm layui-btn-danger"><i class="layui-icon layui-icon-edit"></i></button>
+                                <button class="layui-btn layui-btn-sm layui-btn-danger"><i
+                                        class="layui-icon layui-icon-delete"></i></button>
+                                <button class="layui-btn layui-btn-sm layui-btn-danger"><i
+                                        class="layui-icon layui-icon-edit"></i></button>
                             </td>
                         </tr>
                         </tbody>
