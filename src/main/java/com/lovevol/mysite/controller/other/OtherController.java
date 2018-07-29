@@ -12,4 +12,9 @@ public class OtherController {
         int a = 1 / 0;
         return "error";
     }
+
+    @RequestMapping("/include")
+    public String includePage(){
+        return "/default/include";
+    }
 }

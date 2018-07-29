@@ -1,0 +1,110 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>类别管理</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+</head>
+<script>
+
+</script>
+<body>
+<div th:include="/default/include :: include"></div>
+<div style="width: 100%">
+
+
+    <div class="layui-tab">
+        <ul class="layui-tab-title">
+            <li class="layui-this" lay-id="11">添加类别</li>
+            <li lay-id="22">管理类别</li>
+        </ul>
+        <div class="layui-tab-content">
+            <div class="layui-tab-item layui-show">
+                <form class="layui-form" th:action="@{/admin/addCategory}" th:method="post" target="_parent">
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">名称</label>
+                        <div class="layui-input-block">
+                            <input type="text" th:name="name" th:id="name"  autocomplete="off" placeholder="请输入标题"
+                                   class="layui-input">
+                        </div>
+                    </div>
+
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">类别</label>
+                        <div class="layui-input-block">
+                            <select name="type"  id="type" lay-filter="aihao">
+                                <option value=""></option>
+                                <option value="0" selected = selected>文章</option>
+                                <option value="1" >网站</option>
+                                <option value="2">电子书</option>
+                            </select>
+                            <div class="layui-unselect layui-form-select">
+                                <div class="layui-select-title"><input type="text" placeholder="请选择" value="阅读"
+                                                                       readonly="" class="layui-input layui-unselect"><i
+                                        class="layui-edge"></i></div>
+                                <dl class="layui-anim layui-anim-upbit">
+                                    <dd lay-value="" class="layui-select-tips">请选择</dd>
+                                    <dd lay-value="0" class="layui-this">文章</dd>
+                                    <dd lay-value="1" class="">网站</dd>
+                                    <dd lay-value="2" class="">电子书</dd>
+                                </dl>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="layui-form-item layui-form-text">
+                        <label class="layui-form-label">描述</label>
+                        <div class="layui-input-block">
+                            <textarea placeholder="请输入内容" class="layui-textarea" name="discription" id="discription"></textarea>
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <div class="layui-input-block">
+                            <button class="layui-btn" lay-submit="" lay-filter="demo1">提交</button>
+                            <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="layui-tab-item">
+                <div class="layui-form">
+                    <table class="layui-table">
+                        <colgroup>
+                            <col width="150">
+                            <col width="150">
+                            <col width="200">
+                            <col>
+                            <col width="200">
+                        </colgroup>
+                        <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>名称</th>
+                            <th>类别</th>
+                            <th>描述</th>
+                            <th>操作</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr th:each="category: ${categorys}">
+                            <td th:text="${category.id}"></td>
+                            <td th:text="${category.name}"></td>
+                            <div th:switch="${category.type}">
+                                <td th:case="0">文章</td>
+                                <td th:case="1">网站</td>
+                                <td th:case="2">电纸书</td>
+                            </div>
+
+                            <td th:text="${category.discription}"></td>
+                            <td>
+                                <button class="layui-btn layui-btn-sm layui-btn-danger"><i class="layui-icon layui-icon-delete"></i></button>
+                                <button class="layui-btn layui-btn-sm layui-btn-danger"><i class="layui-icon layui-icon-edit"></i></button>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

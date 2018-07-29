@@ -1,0 +1,31 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<div th:fragment="include">
+    <link th:href="@{/static/layui/css/layui.css}" rel="stylesheet" type="text/css">
+    <script th:src="@{/static/layui/layui.all.js}"></script>
+    <script th:src="@{/static/js/jquery-3.3.1.min.js}"></script>
+    <script th:src="@{/static/layui/layui.js}"></script>
+    <script>
+        function test(){
+            var layer = layui.layer
+                ,form = layui.form;
+
+            layer.alert('Hello World');
+        }
+        //JavaScript代码区域
+        layui.use('element', function(){
+            var element = layui.element;
+            element.init();
+
+        });
+
+        layui.use('form', function(){
+            var form = layui.form; //只有执行了这一步，部分表单元素才会自动修饰成功
+
+            //但是，如果你的HTML是动态生成的，自动渲染就会失效
+            //因此你需要在相应的地方，执行下述方法来手动渲染，跟这类似的还有 element.init();
+            form.render();
+        });
+    </script>
+</div>
+

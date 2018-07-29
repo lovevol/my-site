@@ -23,7 +23,7 @@ spring:
     password: null
   devtools:
     restart:
-      enabled: true
+      enabled: false
       additional-paths: src/main/java
   thymeleaf:
     prefix: classpath:/templates
