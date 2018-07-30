@@ -35,6 +35,11 @@ public class WebAppConfig extends WebMvcConfigurationSupport{
 
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
+        registry.addResourceHandler("/js/**").addResourceLocations("classpath:/js/");
+        registry.addResourceHandler("swagger-ui.html")
+                .addResourceLocations("classpath:/META-INF/resources/");
+        registry.addResourceHandler("/webjars/**")
+                .addResourceLocations("classpath:/META-INF/resources/webjars/");
         registry.addResourceHandler("/static/**")
                 .addResourceLocations(CLASSPATH_RESOURCE_LOCATIONS);
     }

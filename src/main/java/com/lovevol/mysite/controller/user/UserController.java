@@ -27,7 +27,7 @@ public class UserController extends BaseController {
     @Autowired
     StringRedisService stringRedisService;
 
-    @RequestMapping("/save")
+    @GetMapping("/save")
     public String saveUser(){
         stringRedisService.incr("userCount", (long)1);
         User user = new User();

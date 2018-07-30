@@ -10,7 +10,10 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
@@ -34,13 +37,13 @@ public class AdminController extends BaseController {
     @Autowired
     LabelMapper labelMapper;
 
-    @RequestMapping("/goIndex")
+    @RequestMapping(value = "/goIndex",method = RequestMethod.GET)
     public String goindex(){
         logger.info("start go addArticle");
         return "/admin/adminIndex";
     }
 
-    @RequestMapping("/addArticlePage")
+    @GetMapping("/addArticlePage")
     public String goAddArticle(Model model){
         model.addAttribute("categorys", categoryMapper.selectByExample(new CategoryExample()));
         model.addAttribute("labels", labelMapper.selectByExample(new LabelExample()));
@@ -48,32 +51,32 @@ public class AdminController extends BaseController {
     }
 
 
-    @RequestMapping("/editCategoryPage")
+    @GetMapping("/editCategoryPage")
     public String editCategoryPage(Model model){
         model.addAttribute("categorys", categoryMapper.selectByExample(new CategoryExample()));
         return "/admin/editCategory";
     }
 
-    @RequestMapping("/addCategory")
+    @PostMapping("/addCategory")
     public String addCategory(Category category){
         adminService.saveCategory(category);
         return "/admin/adminIndex";
     }
 
-    @RequestMapping("/editLabelPage")
+    @GetMapping("/editLabelPage")
     public String editLabelPage(Model model){
         model.addAttribute("categorys", categoryMapper.selectByExample(new CategoryExample()));
         model.addAttribute("labels", labelMapper.selectByExample(new LabelExample()));
         return "/admin/editLabel";
     }
 
-    @RequestMapping("/addLabel")
+    @PostMapping("/addLabel")
     public String addLabel(Label label){
         labelMapper.insert(label);
         return "/admin/adminIndex";
     }
 
-    @RequestMapping(value = "/addArticle")
+    @PostMapping(value = "/addArticle")
     public String addArticle(Article article, Content content, HttpServletRequest request, MultipartFile image) throws IOException {
         if (article.getTitle() != null && !"".equals(article.getTitle())
                 && article.getIdLabel() != null && !"".equals(article.getIdLabel())
