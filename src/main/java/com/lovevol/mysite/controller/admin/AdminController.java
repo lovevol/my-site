@@ -1,5 +1,6 @@
 package com.lovevol.mysite.controller.admin;
 
+import com.lovevol.mysite.aop.AopLog;
 import com.lovevol.mysite.controller.BaseController;
 import com.lovevol.mysite.dao.CategoryMapper;
 import com.lovevol.mysite.dao.LabelMapper;
@@ -37,6 +38,7 @@ public class AdminController extends BaseController {
     @Autowired
     LabelMapper labelMapper;
 
+    @AopLog(bussType = "admin", operateTypeDesc = "admin go index")
     @RequestMapping(value = "/goIndex",method = RequestMethod.GET)
     public String goindex(){
         logger.info("start go addArticle");

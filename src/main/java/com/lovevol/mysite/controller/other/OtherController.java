@@ -1,5 +1,6 @@
 package com.lovevol.mysite.controller.other;
 
+import com.lovevol.mysite.aop.AopLog;
 import com.lovevol.mysite.service.ProfileTestService;
 import io.swagger.annotations.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +19,7 @@ public class OtherController {
     @Autowired
     ProfileTestService profileTestService;
 
+    @AopLog(bussTypeDesc = "error")
     @GetMapping("/error")
     public String errorTest(){
         int a = 1 / 0;
